@@ -4,25 +4,81 @@
 - [Midterm exam](#midterm-exam)
   - [Table of contents](#table-of-contents)
   - [Objectives](#objectives)
+  - [Switch Device_A](#switch-device_a)
+  - [Hub Device_B](#hub-device_b)
+  - [Switch Device_C](#switch-device_c)
+  - [Switch Device_D](#switch-device_d)
+  - [Switch Device_E](#switch-device_e)
   - [Cisco commands](#cisco-commands)
     - [Enable config terminal mode](#enable-config-terminal-mode)
+    - [Change device name](#change-device-name)
     - [Login banner](#login-banner)
     - [Enable secret](#enable-secret)
     - [Enable password](#enable-password)
     - [Enable console password](#enable-console-password)
     - [Enable VTY lines](#enable-vty-lines)
     - [Enable VLANs](#enable-vlans)
+    - [Configure Switch Administration IP](#configure-switch-administration-ip)
+    - [Configure fastEthernet ports to configured VLANs](#configure-fastethernet-ports-to-configured-vlans)
 
 ## Objectives
 Create VLAN Stuff
 
 TODO
 
+
+
+## Switch Device_A
+Device_A full configuration
+
+```
+enable
+config terminal
+
+hostname Device_A
+
+banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
+
+vlan 21
+name CONTABILIDAD
+exit
+vlan 22
+name EMPLEADOS
+exit
+vlan 23
+name VENTAS
+exit
+vlan 24 
+name VIP
+exit
+vlan 100
+name MANAGEMENT
+exit
+vlan 999
+name NATIVA
+exit
+
+
+```
+
+## Hub Device_B
+
+## Switch Device_C
+
+## Switch Device_D
+
+## Switch Device_E
+
 ## Cisco commands
 ### Enable config terminal mode
 ```
 enable
 config terminal
+```
+
+### Change device name
+```
+hostname Device_A
 ```
 ### Login banner
 ```
@@ -72,3 +128,71 @@ name NATIVA
 exit
 ```
 
+### Configure Switch Administration IP
+```
+interface vlan 100
+description IP ADMINISTRACION Device_A
+ip address 70.0.0.2 255.0.0.0
+no shutdown
+ip default-gateway 70.0.0.1
+
+interface vlan 100
+description IP ADMINISTRACION Device_B
+ip address 70.0.0.3 255.0.0.0
+no shutdown
+ip default-gateway 70.0.0.1
+
+interface vlan 100
+description IP ADMINISTRACION Device_C
+ip address 70.0.0.4 255.0.0.0
+no shutdown
+ip default-gateway 70.0.0.1
+
+interface vlan 100
+description IP ADMINISTRACION Device_D
+ip address 70.0.0.5 255.0.0.0
+no shutdown
+ip default-gateway 70.0.0.1
+```
+
+### Configure fastEthernet ports to configured VLANs
+```
+############ Device A ##########
+interface fastEthernet 0/4
+description CONECTA A PC-1 - VLAN CONTABILIDAD
+switchport mode access 
+switchport access vlan 21
+no shutdown
+
+interface fastEthernet 0/5
+description CONECTA A PC-2 - VLAN EMPLEADOS
+switchport mode access 
+switchport access vlan 22
+no shutdown
+
+############ Device C ##########
+interface fastEthernet 0/8
+description CONECTA A PC-5 - VLAN VENTAS
+switchport mode access 
+switchport access vlan 23
+no shutdown
+
+interface fastEthernet 0/9
+description CONECTA A SRV-6 - VLAN CONTABILIDAD
+switchport mode access 
+switchport access vlan 21
+no shutdown
+
+############ Device D ##########
+interface fastEthernet 0/10
+description CONECTA A SRV-7 - VLAN VIP
+switchport mode access 
+switchport access vlan 24
+no shutdown
+
+interface fastEthernet 0/11
+description CONECTA A PC-8 - VLAN EMPLEADOS
+switchport mode access 
+switchport access vlan 22
+no shutdown
+```
