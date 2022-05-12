@@ -1,34 +1,39 @@
 # Midterm exam
-## Table of contents
+# Table of contents
 
 - [Midterm exam](#midterm-exam)
-  - [Table of contents](#table-of-contents)
-  - [Objectives](#objectives)
-  - [Switch Device_A](#switch-device_a)
-  - [Hub Device_B](#hub-device_b)
-  - [Switch Device_C](#switch-device_c)
-  - [Switch Device_D](#switch-device_d)
-  - [Switch Device_E](#switch-device_e)
-  - [Cisco commands](#cisco-commands)
-    - [Enable config terminal mode](#enable-config-terminal-mode)
-    - [Change device name](#change-device-name)
-    - [Login banner](#login-banner)
-    - [Enable secret](#enable-secret)
-    - [Enable password](#enable-password)
-    - [Enable console password](#enable-console-password)
-    - [Enable VTY lines](#enable-vty-lines)
-    - [Enable VLANs](#enable-vlans)
-    - [Configure Switch Administration IP](#configure-switch-administration-ip)
-    - [Configure fastEthernet ports to configured VLANs](#configure-fastethernet-ports-to-configured-vlans)
+- [Table of contents](#table-of-contents)
+- [Objectives](#objectives)
+- [Switch Device_A](#switch-device_a)
+- [Hub Device_B](#hub-device_b)
+- [Switch Device_C](#switch-device_c)
+- [Switch Device_D](#switch-device_d)
+- [Switch Device_E](#switch-device_e)
+- [Cisco commands](#cisco-commands)
+  - [Enable config terminal mode](#enable-config-terminal-mode)
+  - [Change device name](#change-device-name)
+  - [Login banner](#login-banner)
+  - [Enable secret](#enable-secret)
+  - [Enable password](#enable-password)
+  - [Enable console password](#enable-console-password)
+  - [Enable VTY lines](#enable-vty-lines)
+  - [Enable VLANs](#enable-vlans)
+  - [Configure Switch Administration IP](#configure-switch-administration-ip)
+  - [Configure fastEthernet ports to configured VLANs](#configure-fastethernet-ports-to-configured-vlans)
+  - [Configure fastEthernet trunk ports](#configure-fastethernet-trunk-ports)
 
-## Objectives
+# Objectives
+[---back to top---](#table-of-contents)
+
 Create VLAN Stuff
 
 TODO
 
 
 
-## Switch Device_A
+# Switch Device_A
+[---back to top---](#table-of-contents)
+
 Device_A full configuration
 
 ```
@@ -57,48 +62,57 @@ exit
 vlan 999
 name NATIVA
 exit
-
-
 ```
 
-## Hub Device_B
+# Hub Device_B
+[---back to top---](#table-of-contents)
 
-## Switch Device_C
+# Switch Device_C
+[---back to top---](#table-of-contents)
 
-## Switch Device_D
+# Switch Device_D
+[---back to top---](#table-of-contents)
 
-## Switch Device_E
+# Switch Device_E
+[---back to top---](#table-of-contents)
 
-## Cisco commands
-### Enable config terminal mode
+# Cisco commands
+## Enable config terminal mode
+[---back to top---](#table-of-contents)
 ```
 enable
 config terminal
 ```
 
-### Change device name
+## Change device name
+[---back to top---](#table-of-contents)
 ```
 hostname Device_A
 ```
-### Login banner
+## Login banner
+[---back to top---](#table-of-contents)
 ```
 banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
 ```
-### Enable secret
+## Enable secret
+[---back to top---](#table-of-contents)
 ```
 enable secret cisco
 ```
-### Enable password
+## Enable password
+[---back to top---](#table-of-contents)
 ```
 enable password cisco1
 ```
-### Enable console password
+## Enable console password
+[---back to top---](#table-of-contents)
 ```
 line console 0
 password cisco
 login
 ```
-### Enable VTY lines
+## Enable VTY lines
+[---back to top---](#table-of-contents)
 ```
 line vty 0 15
 password cisco
@@ -106,7 +120,8 @@ login
 
 service password-encryption
 ```
-### Enable VLANs
+## Enable VLANs
+[---back to top---](#table-of-contents)
 ```
 vlan 21
 name CONTABILIDAD
@@ -128,7 +143,8 @@ name NATIVA
 exit
 ```
 
-### Configure Switch Administration IP
+## Configure Switch Administration IP
+[---back to top---](#table-of-contents)
 ```
 interface vlan 100
 description IP ADMINISTRACION Device_A
@@ -155,7 +171,8 @@ no shutdown
 ip default-gateway 70.0.0.1
 ```
 
-### Configure fastEthernet ports to configured VLANs
+## Configure fastEthernet ports to configured VLANs
+[---back to top---](#table-of-contents)
 ```
 ############ Device A ##########
 interface fastEthernet 0/4
@@ -196,3 +213,55 @@ switchport mode access
 switchport access vlan 22
 no shutdown
 ```
+
+## Configure fastEthernet trunk ports
+
+```
+############ Device A ##########
+interface fastEthernet 0/12
+description CONECTA A Device_B - Puerto TRUNK
+switchport mode trunk 
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+interface fastEthernet 0/13
+description CONECTA A Device_C - Puerto TRUNK
+switchport mode trunk 
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+interface fastEthernet 0/14
+description CONECTA A Device_D - Puerto TRUNK
+switchport mode trunk 
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+############ Device B ##########
+
+############ Device C ##########
+interface fastEthernet 0/14
+description CONECTA A Device_A - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+interface fastEthernet 0/16
+description CONECTA A Device_D - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+interface fastEthernet 0/21
+description CONECTA A Device_D - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+```
+
