@@ -4,20 +4,12 @@
 - [Midterm exam](#midterm-exam)
 - [Table of contents](#table-of-contents)
 - [Objectives](#objectives)
-- [Switch Device_A](#switch-device_a)
-- [Hub Device_B](#hub-device_b)
-- [Switch Device_C](#switch-device_c)
-- [Switch Device_D](#switch-device_d)
-- [Switch Device_E](#switch-device_e)
 - [Cisco commands](#cisco-commands)
   - [Misc](#misc)
   - [Enable config terminal mode](#enable-config-terminal-mode)
   - [Change device name](#change-device-name)
   - [Login banner](#login-banner)
-  - [Enable secret](#enable-secret)
-  - [Enable password](#enable-password)
-  - [Enable console password](#enable-console-password)
-  - [Enable VTY lines](#enable-vty-lines)
+  - [Enable Passwords (WARNING TO SAVE TIME DO IT AT THE END.)](#enable-passwords-warning-to-save-time-do-it-at-the-end)
   - [Enable VLANs](#enable-vlans)
   - [Configure Switch Administration IP](#configure-switch-administration-ip)
   - [Configure fastEthernet ports to configured VLANs](#configure-fastethernet-ports-to-configured-vlans)
@@ -27,13 +19,9 @@
 # Objectives
 [---back to top---](#table-of-contents)
 
-Create VLAN Stuff
+Create  VLAN scenarios with spanning tree protocol and other configurations.
 
-TODO
-
-
-
-# Switch Device_A
+<!-- # Switch Device_A
 [---back to top---](#table-of-contents)
 
 Device_A full configuration
@@ -64,7 +52,7 @@ exit
 vlan 999
 name NATIVA
 exit
-```
+``` 
 
 # Hub Device_B
 [---back to top---](#table-of-contents)
@@ -76,11 +64,15 @@ exit
 [---back to top---](#table-of-contents)
 
 # Switch Device_E
-[---back to top---](#table-of-contents)
+[---back to top---](#table-of-contents)-->
 
 # Cisco commands
+[---back to top---](#table-of-contents)
+
+This section contains all the cisco commands to setup a VLAN and other stuff.
 
 ## Misc
+[---back to top---](#table-of-contents)
 ```
 ######## View/Write running configuration #########
 show running-config
@@ -119,32 +111,21 @@ hostname Device_E
 ```
 banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
 ```
-## Enable secret
+## Enable Passwords (WARNING TO SAVE TIME DO IT AT THE END.)
 [---back to top---](#table-of-contents)
 ```
-enable secret cisco
-```
-## Enable password
-[---back to top---](#table-of-contents)
-```
-enable password cisco1
-```
-## Enable console password
-[---back to top---](#table-of-contents)
-```
+enable secret MNB+457KLT
+enable password KFT*678RTW
 line console 0
-password cisco
+password RTM++2GHJ
 login
-```
-## Enable VTY lines
-[---back to top---](#table-of-contents)
-```
 line vty 0 15
-password cisco
+password DFW*TYW/XTY
 login
 
 service password-encryption
 ```
+
 ## Enable VLANs
 [---back to top---](#table-of-contents)
 ```
@@ -404,19 +385,6 @@ no shutdown
 
 ## Configure Spanning tree protocol STP
 [---back to top---](#table-of-contents)
-
-CONTABILIDAD
-21
-EMPLEADOS
-22
-VENTAS
-23
-VIP
-24
-MANAGEMENT
-100
-NATIVA
-999
 
 ```
 ##### ROOT Switch Device_D ######
