@@ -390,52 +390,44 @@ no shutdown
 ##### ROOT Switch Device_D ######
 spanning-tree mode pvst
 spanning-tree extend system-id
-spanning-tree vlan 21 priority 24576
+spanning-tree vlan 21 priority 12288
 
 spanning-tree mode pvst
 spanning-tree extend system-id
-spanning-tree vlan 22 priority 24577
+spanning-tree vlan 22 priority 16384
 
 spanning-tree mode pvst
 spanning-tree extend system-id
-spanning-tree vlan 23 priority 24578
+spanning-tree vlan 23 priority 20480
 
 spanning-tree mode pvst
 spanning-tree extend system-id
-spanning-tree vlan 24 priority 24579
+spanning-tree vlan 24 priority 24576
 
 spanning-tree mode pvst
 spanning-tree extend system-id
-spanning-tree vlan 100 priority 24580
+spanning-tree vlan 100 priority 28672
 
 spanning-tree mode pvst
-spanning-tree extend system-id
-spanning-tree vlan 999 priority 24581
+spanning-tree vlan 999 priority 32768
 
 ##### SECONDARY ROOT Switch #######
 
 spanning-tree mode pvst
-spanning-tree extend system-id
-spanning-tree vlan 21 priority 28672
+spanning-tree vlan 21 priority 36864
+ 
+spanning-tree mode pvst
+spanning-tree vlan 22 priority 40960
 
 spanning-tree mode pvst
-spanning-tree extend system-id
-spanning-tree vlan 22 priority 28673
+spanning-tree vlan 23 priority 45056
 
 spanning-tree mode pvst
-spanning-tree extend system-id
-spanning-tree vlan 23 priority 28674
+spanning-tree vlan 24 priority 49152
 
 spanning-tree mode pvst
-spanning-tree extend system-id
-spanning-tree vlan 24 priority 28675
+spanning-tree vlan 100 priority 53248
 
 spanning-tree mode pvst
-spanning-tree extend system-id
-spanning-tree vlan 100 priority 28676
-
-spanning-tree mode pvst
-spanning-tree extend system-id
-spanning-tree vlan 999 priority 28677
-
+spanning-tree vlan 999 priority 57344
 ```
