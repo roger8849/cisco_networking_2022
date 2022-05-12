@@ -389,23 +389,18 @@ no shutdown
 ```
 ##### ROOT Switch Device_D ######
 spanning-tree mode pvst
-spanning-tree extend system-id
 spanning-tree vlan 21 priority 12288
 
 spanning-tree mode pvst
-spanning-tree extend system-id
 spanning-tree vlan 22 priority 16384
 
 spanning-tree mode pvst
-spanning-tree extend system-id
 spanning-tree vlan 23 priority 20480
 
 spanning-tree mode pvst
-spanning-tree extend system-id
 spanning-tree vlan 24 priority 24576
 
 spanning-tree mode pvst
-spanning-tree extend system-id
 spanning-tree vlan 100 priority 28672
 
 spanning-tree mode pvst
