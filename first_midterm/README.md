@@ -94,7 +94,6 @@ no shutdown
 
 exit
 exit
-show running-config
 copy running-config startup-config
 ``` 
 
