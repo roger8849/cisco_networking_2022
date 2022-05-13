@@ -201,8 +201,117 @@ copy running-config startup-config
 # Switch Device_D
 [---back to top---](#table-of-contents)
 
+```
+enable
+config terminal
+
+hostname Device_D
+banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
+
+vlan 21
+name CONTABILIDAD
+exit
+vlan 22
+name EMPLEADOS
+exit
+vlan 23
+name VENTAS
+exit
+vlan 24 
+name VIP
+exit
+vlan 100
+name MANAGEMENT
+exit
+vlan 999
+name NATIVA
+exit
+
+interface vlan 100
+description IP ADMINISTRACION Device_D
+ip address 70.0.0.5 255.0.0.0
+no shutdown
+ip default-gateway 70.0.0.1
+
+interface fastEthernet 0/10
+description CONECTA A SRV-7 - VLAN VIP
+switchport mode access 
+switchport access vlan 24
+no shutdown
+interface fastEthernet 0/11
+description CONECTA A PC-8 - VLAN EMPLEADOS
+switchport mode access 
+switchport access vlan 22
+no shutdown
+
+interface fastEthernet 0/15
+description CONECTA A Device_A - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface fastEthernet 0/16
+description CONECTA A Device_C - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+spanning-tree vlan 21-24,100,999 root primary
+
+exit
+exit
+copy running-config startup-config
+```
+
 # Switch Device_E
 [---back to top---](#table-of-contents)
+```
+enable
+config terminal
+
+hostname Device_D
+banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
+
+vlan 21
+name CONTABILIDAD
+exit
+vlan 22
+name EMPLEADOS
+exit
+vlan 23
+name VENTAS
+exit
+vlan 24 
+name VIP
+exit
+vlan 100
+name MANAGEMENT
+exit
+vlan 999
+name NATIVA
+exit
+
+interface fastEthernet0/0
+description CONECTA A Device_C - VLAN CONTABILIDAD
+ip address 10.0.0.1 255.0.0.0
+interface fastEthernet0/1
+description CONECTA A Device_C - VLAN EMPLEADOS
+ip address 20.0.0.1 255.0.0.0
+interface fastEthernet1/0
+description CONECTA A Device_C - VLAN VENTAS
+ip address 30.0.0.1 255.0.0.0
+interface fastEthernet1/1
+description CONECTA A Device_C - VLAN VIP
+ip address 40.0.0.1 255.0.0.0
+interface Ethernet0/2/0
+description CONECTA A Device_C - VLAN MANAGEMENT
+ip address 70.0.0.1 255.0.0.0
+
+exit
+exit
+copy running-config startup-config
+```
 
 # Cisco commands
 [---back to top---](#table-of-contents)
