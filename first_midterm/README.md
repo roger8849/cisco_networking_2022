@@ -75,9 +75,8 @@ no shutdown
 
 interface fastEthernet 0/12
 description CONECTA A Device_B - Puerto TRUNK
-switchport mode trunk 
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+switchport mode access
+switchport access vlan 23
 no shutdown
 interface fastEthernet 0/13
 description CONECTA A Device_C - Puerto TRUNK
@@ -155,9 +154,8 @@ switchport trunk native vlan 999
 no shutdown
 interface fastEthernet 0/15
 description CONECTA A Device_B - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+switchport mode access
+switchport access vlan 24
 no shutdown
 interface fastEthernet 0/16
 description CONECTA A Device_D - Puerto TRUNK
@@ -274,18 +272,23 @@ banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
 interface fastEthernet0/0
 description CONECTA A Device_C - VLAN CONTABILIDAD
 ip address 10.0.0.1 255.0.0.0
+no shutdown
 interface fastEthernet0/1
 description CONECTA A Device_C - VLAN EMPLEADOS
 ip address 20.0.0.1 255.0.0.0
+no shutdown
 interface fastEthernet1/0
 description CONECTA A Device_C - VLAN VENTAS
 ip address 30.0.0.1 255.0.0.0
+no shutdown
 interface fastEthernet1/1
 description CONECTA A Device_C - VLAN VIP
 ip address 40.0.0.1 255.0.0.0
+no shutdown
 interface Ethernet0/2/0
 description CONECTA A Device_C - VLAN MANAGEMENT
 ip address 70.0.0.1 255.0.0.0
+no shutdown
 
 exit
 exit
@@ -487,7 +490,7 @@ interface fastEthernet 0/13
 description CONECTA A Device_C - Puerto TRUNK
 switchport mode trunk 
 switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+switchport trunk native vlan 999s
 no shutdown
 
 interface fastEthernet 0/14
