@@ -273,25 +273,6 @@ config terminal
 hostname Device_D
 banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
 
-vlan 21
-name CONTABILIDAD
-exit
-vlan 22
-name EMPLEADOS
-exit
-vlan 23
-name VENTAS
-exit
-vlan 24 
-name VIP
-exit
-vlan 100
-name MANAGEMENT
-exit
-vlan 999
-name NATIVA
-exit
-
 interface fastEthernet0/0
 description CONECTA A Device_C - VLAN CONTABILIDAD
 ip address 10.0.0.1 255.0.0.0
