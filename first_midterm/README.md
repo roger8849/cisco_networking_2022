@@ -74,7 +74,7 @@ switchport access vlan 22
 no shutdown
 
 interface fastEthernet 0/12
-description CONECTA A Device_B - Puerto TRUNK
+description CONECTA A Device_B - VLAN VENTAS
 switchport mode access
 switchport access vlan 23
 no shutdown
