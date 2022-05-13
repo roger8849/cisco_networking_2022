@@ -153,7 +153,7 @@ switchport trunk allowed vlan 21,22,23,24,100,999
 switchport trunk native vlan 999
 no shutdown
 interface fastEthernet 0/15
-description CONECTA A Device_B - Puerto TRUNK
+description CONECTA A Device_B - VLAN VIP
 switchport mode access
 switchport access vlan 24
 no shutdown
