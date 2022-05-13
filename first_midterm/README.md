@@ -166,48 +166,36 @@ switchport trunk allowed vlan 21,22,23,24,100,999
 switchport trunk native vlan 999
 no shutdown
 interface fastEthernet 0/21
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN CONTABILIDAD
+switchport mode access
+switchport access vlan 21
 no shutdown
 interface fastEthernet 0/22
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN EMPLEADOS
+switchport mode access
+switchport access vlan 22
 no shutdown
 interface fastEthernet 0/23
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN VENTAS
+switchport mode access
+switchport access vlan 23
 no shutdown
 interface fastEthernet 0/24
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN VIP
+switchport mode access
+switchport access vlan 24
 no shutdown
 interface gigabitEthernet 0/1
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN MANAGEMENT
+switchport mode access
+switchport access vlan 100
 no shutdown
 
-spanning-tree mode pvst
-spanning-tree vlan 21 priority 36864
-spanning-tree mode pvst
-spanning-tree vlan 22 priority 40960
-spanning-tree mode pvst
-spanning-tree vlan 23 priority 45056
-spanning-tree mode pvst
-spanning-tree vlan 24 priority 49152
-spanning-tree mode pvst
-spanning-tree vlan 100 priority 53248
-spanning-tree mode pvst
-spanning-tree vlan 999 priority 57344
+spanning-tree vlan 21-24,100,999 root secondary
+
+exit
+exit
+copy running-config startup-config
 ```
 
 # Switch Device_D
@@ -446,38 +434,33 @@ switchport trunk native vlan 999
 no shutdown
 
 interface fastEthernet 0/21
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN CONTABILIDAD
+switchport mode access
+switchport access vlan 21
 no shutdown
 
 interface fastEthernet 0/22
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN EMPLEADOS
+switchport mode access
+switchport access vlan 22
 no shutdown
 
 interface fastEthernet 0/23
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN VENTAS
+switchport mode access
+switchport access vlan 23
 no shutdown
 
 interface fastEthernet 0/24
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN VIP
+switchport mode access
+switchport access vlan 24
 no shutdown
 
 interface gigabitEthernet 0/1
-description CONECTA A Device_E - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
+description CONECTA A Device_E - VLAN MANAGEMENT
+switchport mode access
+switchport access vlan 100
 no shutdown
 
 
@@ -496,41 +479,27 @@ switchport trunk allowed vlan 21,22,23,24,100,999
 switchport trunk native vlan 999
 no shutdown
 
-############ Device E ##########  DEVICE E es un 2811 con tarjetas nm-2e2w wic-1enet
-interface fastEthernet 0/0
-description CONECTA A Device_C - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
-no shutdown
+############ Device E ##########  DEVICE E es un 2811 con tarjetas nm-2fe2w wic-1enet
 
-interface fastEthernet 0/1
-description CONECTA A Device_C - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
-no shutdown
+interface fastEthernet0/0
+description CONECTA A Device_C - VLAN CONTABILIDAD
+ip address 10.0.0.1 255.0.0.0
 
-interface fastEthernet 1/0
-description CONECTA A Device_C - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
-no shutdown
+interface fastEthernet0/1
+description CONECTA A Device_C - VLAN EMPLEADOS
+ip address 20.0.0.1 255.0.0.0
 
-interface fastEthernet 1/1
-description CONECTA A Device_C - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
-no shutdown
+interface fastEthernet1/0
+description CONECTA A Device_C - VLAN VENTAS
+ip address 30.0.0.1 255.0.0.0
 
-interface Ethernet 0/2/0
-description CONECTA A Device_C - Puerto TRUNK
-switchport mode trunk
-switchport trunk allowed vlan 21,22,23,24,100,999
-switchport trunk native vlan 999
-no shutdown
+interface fastEthernet1/1
+description CONECTA A Device_C - VLAN VIP
+ip address 40.0.0.1 255.0.0.0
+
+interface Ethernet0/2/0
+description CONECTA A Device_C - VLAN MANAGEMENT
+ip address 70.0.0.1 255.0.0.0
 ```
 
 ## Configure Spanning tree protocol STP
@@ -538,41 +507,8 @@ no shutdown
 
 ```
 ##### ROOT Switch Device_D ######
-spanning-tree mode pvst
-spanning-tree vlan 21 priority 12288
-
-spanning-tree mode pvst
-spanning-tree vlan 22 priority 16384
-
-spanning-tree mode pvst
-spanning-tree vlan 23 priority 20480
-
-spanning-tree mode pvst
-spanning-tree vlan 24 priority 24576
-
-spanning-tree mode pvst
-spanning-tree vlan 100 priority 28672
-
-spanning-tree mode pvst
-spanning-tree vlan 999 priority 32768
+spanning-tree vlan 21-24,100,999 root primary
 
 ##### SECONDARY ROOT Device_C #######
-
-spanning-tree mode pvst
-spanning-tree vlan 21 priority 36864
- 
-spanning-tree mode pvst
-spanning-tree vlan 22 priority 40960
-
-spanning-tree mode pvst
-spanning-tree vlan 23 priority 45056
-
-spanning-tree mode pvst
-spanning-tree vlan 24 priority 49152
-
-spanning-tree mode pvst
-spanning-tree vlan 100 priority 53248
-
-spanning-tree mode pvst
-spanning-tree vlan 999 priority 57344
+spanning-tree vlan 21-24,100,999 root secondary
 ```
