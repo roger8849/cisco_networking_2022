@@ -34,11 +34,9 @@ Device_A full configuration:
 enable
 config terminal
 
-######### Device name ########
 hostname Device_A
 banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
 
-######### Enable VLANs #######
 vlan 21
 name CONTABILIDAD
 exit
@@ -58,41 +56,35 @@ vlan 999
 name NATIVA
 exit
 
-###### Enable IP Switch ######
 interface vlan 100
 description IP ADMINISTRACION Device_A
 ip address 70.0.0.2 255.0.0.0
 no shutdown
 ip default-gateway 70.0.0.1
 
-##### VLANs configuration #####
 interface fastEthernet 0/4
 description CONECTA A PC-1 - VLAN CONTABILIDAD
 switchport mode access 
 switchport access vlan 21
 no shutdown
-
 interface fastEthernet 0/5
 description CONECTA A PC-2 - VLAN EMPLEADOS
 switchport mode access 
 switchport access vlan 22
 no shutdown
 
-########## Trunk port configuration #########
 interface fastEthernet 0/12
 description CONECTA A Device_B - Puerto TRUNK
 switchport mode trunk 
 switchport trunk allowed vlan 21,22,23,24,100,999
 switchport trunk native vlan 999
 no shutdown
-
 interface fastEthernet 0/13
 description CONECTA A Device_C - Puerto TRUNK
 switchport mode trunk 
 switchport trunk allowed vlan 21,22,23,24,100,999
 switchport trunk native vlan 999
 no shutdown
-
 interface fastEthernet 0/14
 description CONECTA A Device_D - Puerto TRUNK
 switchport mode trunk 
@@ -100,7 +92,8 @@ switchport trunk allowed vlan 21,22,23,24,100,999
 switchport trunk native vlan 999
 no shutdown
 
-######## View/Write running configuration #########
+exit
+exit
 show running-config
 copy running-config startup-config
 ``` 
