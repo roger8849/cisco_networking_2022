@@ -194,7 +194,6 @@ no shutdown
 spanning-tree vlan 21-24,100,999 root secondary
 
 exit
-exit
 copy running-config startup-config
 ```
 
@@ -260,7 +259,6 @@ no shutdown
 spanning-tree vlan 21-24,100,999 root primary
 
 exit
-exit
 copy running-config startup-config
 ```
 
@@ -270,7 +268,7 @@ copy running-config startup-config
 enable
 config terminal
 
-hostname Device_D
+hostname Device_E
 banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
 
 interface fastEthernet0/0
