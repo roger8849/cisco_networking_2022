@@ -4,6 +4,11 @@
 - [Midterm exam](#midterm-exam)
 - [Table of contents](#table-of-contents)
 - [Objectives](#objectives)
+- [Switch Device_A](#switch-device_a)
+- [Hub Device_B](#hub-device_b)
+- [Switch Device_C](#switch-device_c)
+- [Switch Device_D](#switch-device_d)
+- [Switch Device_E](#switch-device_e)
 - [Cisco commands](#cisco-commands)
   - [Misc](#misc)
   - [Enable config terminal mode](#enable-config-terminal-mode)
@@ -21,19 +26,19 @@
 
 Create  VLAN scenarios with spanning tree protocol and other configurations.
 
-<!-- # Switch Device_A
+# Switch Device_A
 [---back to top---](#table-of-contents)
 
-Device_A full configuration
-
+Device_A full configuration:
 ```
 enable
 config terminal
 
+######### Device name ########
 hostname Device_A
-
 banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
 
+######### Enable VLANs #######
 vlan 21
 name CONTABILIDAD
 exit
@@ -52,19 +57,70 @@ exit
 vlan 999
 name NATIVA
 exit
+
+###### Enable IP Switch ######
+interface vlan 100
+description IP ADMINISTRACION Device_A
+ip address 70.0.0.2 255.0.0.0
+no shutdown
+ip default-gateway 70.0.0.1
+
+##### VLANs configuration #####
+interface fastEthernet 0/4
+description CONECTA A PC-1 - VLAN CONTABILIDAD
+switchport mode access 
+switchport access vlan 21
+no shutdown
+
+interface fastEthernet 0/5
+description CONECTA A PC-2 - VLAN EMPLEADOS
+switchport mode access 
+switchport access vlan 22
+no shutdown
+
+########## Trunk port configuration #########
+interface fastEthernet 0/12
+description CONECTA A Device_B - Puerto TRUNK
+switchport mode trunk 
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+interface fastEthernet 0/13
+description CONECTA A Device_C - Puerto TRUNK
+switchport mode trunk 
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+interface fastEthernet 0/14
+description CONECTA A Device_D - Puerto TRUNK
+switchport mode trunk 
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+######## View/Write running configuration #########
+show running-config
+copy running-config startup-config
 ``` 
 
 # Hub Device_B
 [---back to top---](#table-of-contents)
 
+N/A
+
 # Switch Device_C
 [---back to top---](#table-of-contents)
+```
+
+```
 
 # Switch Device_D
 [---back to top---](#table-of-contents)
 
 # Switch Device_E
-[---back to top---](#table-of-contents)-->
+[---back to top---](#table-of-contents)
 
 # Cisco commands
 [---back to top---](#table-of-contents)
