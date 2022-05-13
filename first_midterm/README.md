@@ -105,7 +105,109 @@ N/A
 # Switch Device_C
 [---back to top---](#table-of-contents)
 ```
+enable
+config terminal
 
+hostname Device_C
+banner motd $Entorno Corporativo privado RED COLOMBIA FABRICA!...$
+
+vlan 21
+name CONTABILIDAD
+exit
+vlan 22
+name EMPLEADOS
+exit
+vlan 23
+name VENTAS
+exit
+vlan 24 
+name VIP
+exit
+vlan 100
+name MANAGEMENT
+exit
+vlan 999
+name NATIVA
+exit
+
+interface vlan 100
+description IP ADMINISTRACION Device_C
+ip address 70.0.0.4 255.0.0.0
+no shutdown
+ip default-gateway 70.0.0.1
+
+interface fastEthernet 0/8
+description CONECTA A PC-5 - VLAN VENTAS
+switchport mode access 
+switchport access vlan 23
+no shutdown
+interface fastEthernet 0/9
+description CONECTA A SRV-6 - VLAN CONTABILIDAD
+switchport mode access 
+switchport access vlan 21
+no shutdown
+
+interface fastEthernet 0/14
+description CONECTA A Device_A - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface fastEthernet 0/15
+description CONECTA A Device_B - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface fastEthernet 0/16
+description CONECTA A Device_D - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface fastEthernet 0/21
+description CONECTA A Device_E - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface fastEthernet 0/22
+description CONECTA A Device_E - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface fastEthernet 0/23
+description CONECTA A Device_E - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface fastEthernet 0/24
+description CONECTA A Device_E - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+interface gigabitEthernet 0/1
+description CONECTA A Device_E - Puerto TRUNK
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
+spanning-tree mode pvst
+spanning-tree vlan 21 priority 36864
+spanning-tree mode pvst
+spanning-tree vlan 22 priority 40960
+spanning-tree mode pvst
+spanning-tree vlan 23 priority 45056
+spanning-tree mode pvst
+spanning-tree vlan 24 priority 49152
+spanning-tree mode pvst
+spanning-tree vlan 100 priority 53248
+spanning-tree mode pvst
+spanning-tree vlan 999 priority 57344
 ```
 
 # Switch Device_D
@@ -454,7 +556,7 @@ spanning-tree vlan 100 priority 28672
 spanning-tree mode pvst
 spanning-tree vlan 999 priority 32768
 
-##### SECONDARY ROOT Switch #######
+##### SECONDARY ROOT Device_C #######
 
 spanning-tree mode pvst
 spanning-tree vlan 21 priority 36864
