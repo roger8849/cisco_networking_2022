@@ -573,6 +573,13 @@ interface fastEthernet0/0
 description CONECTA A Device_C - VLAN CONTABILIDAD
 ip address 10.0.0.1 255.0.0.0
 
+interface fastEthernet0/0
+description CONECTA A Device_C - VLAN CONTABILIDAD
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,100,999
+switchport trunk native vlan 999
+no shutdown
+
 interface fastEthernet0/1
 description CONECTA A Device_C - VLAN EMPLEADOS
 ip address 20.0.0.1 255.0.0.0
