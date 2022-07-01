@@ -23,14 +23,17 @@ service password-encryption
 
 interface gigabitEthernet0/0
 ip address 192.168.1.1 255.255.255.0
+clock rate 128000
 no shutdown
 
 interface serial0/0/0
 ip address 192.168.12.1 255.255.255.252
+clock rate 128000
 no shutdown
 
 interface serial0/0/1
 ip address 192.168.13.1 255.255.255.252
+clock rate 128000
 no shutdown
 
 copy running-config startup-config
@@ -58,14 +61,17 @@ service password-encryption
 
 interface gigabitEthernet0/0
 ip address 192.168.2.1 255.255.255.0
+clock rate 128000
 no shutdown
 
 interface serial0/0/0
 ip address 192.168.12.2 255.255.255.252
+clock rate 128000
 no shutdown
 
 interface serial0/0/1
 ip address 192.168.23.1 255.255.255.252
+clock rate 128000
 no shutdown
 
 copy running-config startup-config
@@ -93,14 +99,17 @@ service password-encryption
 
 interface gigabitEthernet0/0
 ip address 192.168.3.1 255.255.255.0
+clock rate 128000
 no shutdown
 
 interface serial0/0/0
 ip address 192.168.13.2 255.255.255.252
+clock rate 128000
 no shutdown
 
 interface serial0/0/1
 ip address 192.168.23.2 255.255.255.252
+clock rate 128000
 no shutdown
 
 copy running-config startup-config
