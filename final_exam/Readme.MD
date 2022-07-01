@@ -34,11 +34,19 @@ ip address 192.168.13.1 255.255.255.252
 clock rate 128000
 no shutdown
 
-router ospf
+exit
+router ospf 10
 network 192.168.12.1 0.0.0.255 area 0
 network 192.168.13.1 0.0.0.255 area 0
 
+interface lo0
+ip address 1.1.1.1 255.255.255.255
+end
+
+exit
+exit
 copy running-config startup-config
+reload
 ```
 
 ## Router 2
@@ -76,11 +84,20 @@ ip address 192.168.23.1 255.255.255.252
 clock rate 128000
 no shutdown
 
+exit
 router ospf
 network 192.168.12.2 0.0.0.255 area 0
 network 192.168.23.1 0.0.0.255 area 0
 
+interface lo0
+ip address 2.2.2.2 255.255.255.255
+end
+
+exit
+exit
 copy running-config startup-config
+
+reload
 ```
 
 ## Router 3
@@ -118,9 +135,19 @@ ip address 192.168.23.2 255.255.255.252
 clock rate 128000
 no shutdown
 
-router ospf
+exit
+router ospf 10
 network 192.168.13.2 0.0.0.255 area 0
 network 192.168.23.2 0.0.0.255 area 0
 
+interface lo0
+ip address 3.3.3.3 255.255.255.255
+end
+
+exit
+exit
 copy running-config startup-config
+
+reload
+
 ```
