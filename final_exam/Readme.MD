@@ -36,8 +36,12 @@ no shutdown
 
 exit
 router ospf 10
-network 192.168.12.1 0.0.0.255 area 0
-network 192.168.13.1 0.0.0.255 area 0
+no network 192.168.12.0 0.0.0.255 area 0
+no network 192.168.13.0 0.0.0.255 area 0
+router-id 11.11.11.11
+network 192.168.1.0 0.0.0.255 area 0
+network 192.168.12.0 0.0.0.3 area 0
+network 192.168.13.0 0.0.0.3 area 0
 
 interface lo0
 ip address 1.1.1.1 255.255.255.255
@@ -85,9 +89,14 @@ clock rate 128000
 no shutdown
 
 exit
-router ospf
-network 192.168.12.2 0.0.0.255 area 0
-network 192.168.23.1 0.0.0.255 area 0
+
+router ospf 10
+no network 192.168.12.0 0.0.0.255 area 0
+no network 192.168.23.0 0.0.0.255 area 0
+router-id 22.22.22.22
+network 192.168.2.0 0.0.0.255 area 0
+network 192.168.12.0 0.0.0.3 area 0
+network 192.168.23.0 0.0.0.3 area 0
 
 interface lo0
 ip address 2.2.2.2 255.255.255.255
@@ -136,9 +145,14 @@ clock rate 128000
 no shutdown
 
 exit
+
 router ospf 10
-network 192.168.13.2 0.0.0.255 area 0
-network 192.168.23.2 0.0.0.255 area 0
+no network 192.168.13.0 0.0.0.255 area 0
+no network 192.168.23.0 0.0.0.255 area 0
+router-id 33.33.33.33
+network 192.168.3.0 0.0.0.255 area 0
+network 192.168.13.0 0.0.0.3 area 0
+network 192.168.23.0 0.0.0.3 area 0
 
 interface lo0
 ip address 3.3.3.3 255.255.255.255
