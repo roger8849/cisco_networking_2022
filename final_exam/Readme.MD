@@ -21,6 +21,16 @@ login
 
 service password-encryption
 
+interface gigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+
+interface serial0/0/0
+ip address 192.168.12.1 255.255.255.252
+
+interface serial0/0/1
+ip address 192.168.13.1 255.255.255.252
+
+copy running-config startup-config
 ```
 
 ## Router 2
@@ -43,6 +53,16 @@ login
 
 service password-encryption
 
+interface gigabitEthernet0/0
+ip address 192.168.2.1 255.255.255.0
+
+interface serial0/0/0
+ip address 192.168.12.2 255.255.255.252
+
+interface serial0/0/1
+ip address 192.168.23.1 255.255.255.252
+
+copy running-config startup-config
 ```
 
 ## Router 3
@@ -65,4 +85,14 @@ login
 
 service password-encryption
 
+interface gigabitEthernet0/0
+ip address 192.168.3.1 255.255.255.0
+
+interface serial0/0/0
+ip address 192.168.13.2 255.255.255.252
+
+interface serial0/0/1
+ip address 192.168.23.2 255.255.255.252
+
+copy running-config startup-config
 ```
