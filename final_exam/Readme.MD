@@ -149,5 +149,4 @@ exit
 copy running-config startup-config
 
 reload
-
 ```
