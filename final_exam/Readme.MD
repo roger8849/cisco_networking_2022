@@ -1,6 +1,4 @@
 
-
-
 ## Router 1
 
 ```
@@ -35,6 +33,10 @@ interface serial0/0/1
 ip address 192.168.13.1 255.255.255.252
 clock rate 128000
 no shutdown
+
+router ospf
+network 192.168.12.1 0.0.0.255 area 0
+network 192.168.13.1 0.0.0.255 area 0
 
 copy running-config startup-config
 ```
@@ -74,6 +76,10 @@ ip address 192.168.23.1 255.255.255.252
 clock rate 128000
 no shutdown
 
+router ospf
+network 192.168.12.2 0.0.0.255 area 0
+network 192.168.23.1 0.0.0.255 area 0
+
 copy running-config startup-config
 ```
 
@@ -111,6 +117,10 @@ interface serial0/0/1
 ip address 192.168.23.2 255.255.255.252
 clock rate 128000
 no shutdown
+
+router ospf
+network 192.168.13.2 0.0.0.255 area 0
+network 192.168.23.2 0.0.0.255 area 0
 
 copy running-config startup-config
 ```
